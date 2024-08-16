@@ -1,5 +1,5 @@
 {
-  "name": "Medium App",
+  "name": "Medium Backend",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts"

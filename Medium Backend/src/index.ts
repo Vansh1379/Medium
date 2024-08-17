@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { user } from "@prisma/client"
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 
@@ -8,15 +9,37 @@ const app = new Hono<{
   }
 }>()
 
-app.post("/api/v1/user/signup", (c) => {
+app.post("/api/v1/user/signup", async (c) => {
+
+  console.log("DATABASE_URL:", c.env.DATABASE_URL);
+
+  const body = await c.req.json();
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate())
 
-  return c.text("Hello from signup");
-})
+  try {
 
+    await prisma.user.create({
+      data: {
+        username: body.username,
+        password: body.password,
+        name: body.name,
+        email: body.email,
+      }
+    })
+
+    return c.text("Hello from signup");
+  }
+  catch (e) {
+    console.error('Error:', e);
+    c.status(411);
+    return c.text(`User Already Exist with this username or email id ${e}`)
+  }
+
+})
+// .........................................................................................................................
 app.post("/api/v1/user/signin", (c) => {
 
   const prisma = new PrismaClient({
@@ -63,5 +86,3 @@ app.get("api/v1/blog/bulk", (c) => {
 })
 
 export default app
-//  "postgresql://postgres:vanshkalra@localhost:5432/postgres"
-// DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiZjI3ZWRhNjctNGY3My00YTRlLTgwMTEtYzU0MTdiZjBkYWMxIiwidGVuYW50X2lkIjoiMjk0MDc0OTc0ZDEyOGMxYzkyMjgzNzhkYzk2YmRlNjI3NmMwNTE4MDg4MGQxODM5Y2E1YmI5NDFlZGZlYmM0YyIsImludGVybmFsX3NlY3JldCI6Ijk0NWI5MjI5LTIwZjQtNDdjYS1hN2EwLWRkYmViNzhjMGVmMiJ9.qeTlqdAagYs2nN7QajbTMTEWmyxFgTnhVqfnYwi0ONk"

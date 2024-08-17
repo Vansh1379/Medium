@@ -1,28 +1,64 @@
 import { Hono } from 'hono'
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate'
 
-const app = new Hono()
+const app = new Hono<{
+  Bindings: {
+    DATABASE_URL: string;
+  }
+}>()
 
 app.post("/api/v1/user/signup", (c) => {
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate())
+
   return c.text("Hello from signup");
 })
 
 app.post("/api/v1/user/signin", (c) => {
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate())
+
   return c.text("heelo from signin");
 })
 
 app.post("/api/v1/blog", (c) => {
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate())
+
   return c.text("Hello from blog");
 })
 
 app.put("/api/v1/blog", (c) => {
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate())
+
   return c.text("hello from blog put");
 })
 
 app.get("api/v1/blog/:id", (c) => {
-  return c.text("heelo from blog id"); 
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate())
+
+  return c.text("heelo from blog id");
 })
 
 app.get("api/v1/blog/bulk", (c) => {
+
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate())
+
   return c.text("Gello from blog bulk");
 })
 

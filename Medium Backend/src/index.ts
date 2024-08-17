@@ -19,7 +19,7 @@ app.put("/api/v1/blog", (c) => {
 })
 
 app.get("api/v1/blog/:id", (c) => {
-  return c.text("heelo from blog id");
+  return c.text("heelo from blog id"); 
 })
 
 app.get("api/v1/blog/bulk", (c) => {

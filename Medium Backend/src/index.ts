@@ -1,88 +1,66 @@
 import { Hono } from 'hono'
-import { user } from "@prisma/client"
+import { User } from '@prisma/client';
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 
 const app = new Hono<{
   Bindings: {
-    DATABASE_URL: string;
+    DATABASE_URL: string
   }
-}>()
+}>();
 
-app.post("/api/v1/user/signup", async (c) => {
-
-  console.log("DATABASE_URL:", c.env.DATABASE_URL);
-
-  const body = await c.req.json();
+app.post('/api/v1/user/signup', async (c) => {
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate())
 
-  try {
+  const body = await c.req.json();
 
+  try {
     await prisma.user.create({
       data: {
         username: body.username,
         password: body.password,
-        name: body.name,
-        email: body.email,
+        name: body.name
       }
-    })
+    });
 
-    return c.text("Hello from signup");
+    return c.text('jwt here guys')
   }
   catch (e) {
-    console.error('Error:', e);
-    c.status(411);
-    return c.text(`User Already Exist with this username or email id ${e}`)
+    c.status(403);
+    return c.text(`This is that fucking error ${e}`)
+    console.error(e);
   }
+});
 
-})
-// .........................................................................................................................
-app.post("/api/v1/user/signin", (c) => {
+app.post("/api/v1/user/signin", async (c) => {
+  const body = c.req.json();
+  return c.text('hello from signin');
+});
 
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env.DATABASE_URL,
-  }).$extends(withAccelerate())
+app.post('/api/v1/blog', async (c) => {
+  return c.text('Hello from blog post');
+});
 
-  return c.text("heelo from signin");
-})
+app.put('/api/v1/blog', async (c) => {
+  return c.text('Hello from blog post');
+});
 
-app.post("/api/v1/blog", (c) => {
+app.get('/api/v1/blog/:id', async (c) => {
+  const id = c.req.param('id');
+  return c.text(`Hello from blog post ${id}`);
+});
 
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env.DATABASE_URL,
-  }).$extends(withAccelerate())
-
-  return c.text("Hello from blog");
-})
-
-app.put("/api/v1/blog", (c) => {
-
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env.DATABASE_URL,
-  }).$extends(withAccelerate())
-
-  return c.text("hello from blog put");
-})
-
-app.get("api/v1/blog/:id", (c) => {
-
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env.DATABASE_URL,
-  }).$extends(withAccelerate())
-
-  return c.text("heelo from blog id");
-})
-
-app.get("api/v1/blog/bulk", (c) => {
-
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env.DATABASE_URL,
-  }).$extends(withAccelerate())
-
-  return c.text("Gello from blog bulk");
-})
+app.get('/api/v1/blog/bulk', async (c) => {
+  return c.text('Hello from blog post bulk');
+});
 
 export default app
+
+
+// postgres://avnadmin:AVNS_QJo8NJF-Rm0azJdP-mY@pg-619df46-vanshkalra1379-1379.b.aivencloud.com:25758/defaultdb?sslmode=require
+
+// DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNjdhOGQ4N2UtZmU2Ny00YTllLTlkZDYtNmNkYjU4NzcyM2M3IiwidGVuYW50X2lkIjoiNmRiMTI1YjZkMjlkY2I5OTJhYTA4YjJhMTU1MWMyZWE5NDRiZjJiYTg5Zjg2ZjE4MDYxOTY2MmU3ZDIwNGM0NyIsImludGVybmFsX3NlY3JldCI6IjM4YmQ4NGU0LTYyODEtNDhlMC1iNDRjLWMzZWZlY2VkOWQ3MCJ9.9vltmP53f769EWizhsTEpH0rWre9HK3QtaIrFoz1NoI"
+

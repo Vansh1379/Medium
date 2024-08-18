@@ -1,8 +1,8 @@
-name = "medium-backend"
+name = "backend"
 compatibility_date = "2024-08-17"
 
 [vars]
-DATABASE_URL= "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiYzBiNGU5MzctNGM4NC00OGUyLWI1ODYtYWYyNzk0NWZjNzEwIiwidGVuYW50X2lkIjoiMjk0MDc0OTc0ZDEyOGMxYzkyMjgzNzhkYzk2YmRlNjI3NmMwNTE4MDg4MGQxODM5Y2E1YmI5NDFlZGZlYmM0YyIsImludGVybmFsX3NlY3JldCI6Ijk0NWI5MjI5LTIwZjQtNDdjYS1hN2EwLWRkYmViNzhjMGVmMiJ9.sn6KUjsZSOXVaMGUObA8oqz_eVOQknN5XLT9962oLMo"# MY_VAR = "my-variable"
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNjdhOGQ4N2UtZmU2Ny00YTllLTlkZDYtNmNkYjU4NzcyM2M3IiwidGVuYW50X2lkIjoiNmRiMTI1YjZkMjlkY2I5OTJhYTA4YjJhMTU1MWMyZWE5NDRiZjJiYTg5Zjg2ZjE4MDYxOTY2MmU3ZDIwNGM0NyIsImludGVybmFsX3NlY3JldCI6IjM4YmQ4NGU0LTYyODEtNDhlMC1iNDRjLWMzZWZlY2VkOWQ3MCJ9.9vltmP53f769EWizhsTEpH0rWre9HK3QtaIrFoz1NoI"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"

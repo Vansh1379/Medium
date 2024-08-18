@@ -60,7 +60,5 @@ app.get('/api/v1/blog/bulk', async (c) => {
 export default app
 
 
-// postgres://avnadmin:AVNS_QJo8NJF-Rm0azJdP-mY@pg-619df46-vanshkalra1379-1379.b.aivencloud.com:25758/defaultdb?sslmode=require
 
-// DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNjdhOGQ4N2UtZmU2Ny00YTllLTlkZDYtNmNkYjU4NzcyM2M3IiwidGVuYW50X2lkIjoiNmRiMTI1YjZkMjlkY2I5OTJhYTA4YjJhMTU1MWMyZWE5NDRiZjJiYTg5Zjg2ZjE4MDYxOTY2MmU3ZDIwNGM0NyIsImludGVybmFsX3NlY3JldCI6IjM4YmQ4NGU0LTYyODEtNDhlMC1iNDRjLWMzZWZlY2VkOWQ3MCJ9.9vltmP53f769EWizhsTEpH0rWre9HK3QtaIrFoz1NoI"
 

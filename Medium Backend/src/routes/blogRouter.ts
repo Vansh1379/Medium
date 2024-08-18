@@ -20,7 +20,7 @@ blogRouter.use("/*", async (c: Context, next) => {
         if (!token) {
             return c.body("Invalid Token", 403);
         }
-        
+
         const words = token.split(" ")[1];
         const verified = await verify(words, c.env.JWT_SECRET);
         if (!verified) {
@@ -93,7 +93,7 @@ blogRouter.get('/bulk', async (c) => {
     const list = await prisma.blog.findMany();
 
     return c.json({
-        message: "Blog list",
+        message: "Blog Updated list",
         list
     })
 });

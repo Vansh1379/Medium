@@ -58,7 +58,3 @@ app.get('/api/v1/blog/bulk', async (c) => {
 });
 
 export default app
-
-
-
-

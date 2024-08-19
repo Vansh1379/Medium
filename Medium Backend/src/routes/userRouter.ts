@@ -18,13 +18,13 @@ userRouter.post('/signup', async (c) => {
 
     const body = await c.req.json();
 
-    const {success} = signupInput.safeParse(body);
-    if(!success){
-        c.status(411);
-        return c.json({
-            message: "Wrong Inputs Not validated by zod"
-        })
-    }
+    // const {success} = signupInput.safeParse(body);
+    // if(!success){
+    //     c.status(411);
+    //     return c.json({
+    //         message: "Wrong Inputs Not validated by zod"
+    //     })
+    // }
 
     try {
         const user = await prisma.user.create({

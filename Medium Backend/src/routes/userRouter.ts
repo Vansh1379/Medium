@@ -2,7 +2,6 @@ import { Hono } from "hono";
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
-import { signupInput } from "../Zod/zod";
 
 export const userRouter = new  Hono<{
     Bindings: {

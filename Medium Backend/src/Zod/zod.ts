@@ -1,4 +1,4 @@
-import {z} from 'zod'
+import z from 'zod'
 
 export const signupInput = z.object({
     username: z.string().email({message: "Worng usename hai bhai"}),

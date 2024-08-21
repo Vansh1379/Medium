@@ -2,13 +2,13 @@ import { Hono } from "hono";
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
-
-export const userRouter = new  Hono<{
+import { signupInput, signinInput } from "@vanshkalra1379/medium-common"
+export const userRouter = new Hono<{
     Bindings: {
-      DATABASE_URL: string;
-      JWT_SECRET: string;
+        DATABASE_URL: string;
+        JWT_SECRET: string;
     }
-  }>();
+}>();
 
 userRouter.post('/signup', async (c) => {
 
@@ -18,13 +18,13 @@ userRouter.post('/signup', async (c) => {
 
     const body = await c.req.json();
 
-    // const {success} = signupInput.safeParse(body);
-    // if(!success){
-    //     c.status(411);
-    //     return c.json({
-    //         message: "Wrong Inputs Not validated by zod"
-    //     })
-    // }
+    const { success } = signupInput.safeParse(body);
+    if (!success) {
+        c.status(411);
+        return c.json({
+            message: "Wrong Inputs Not validated by zod"
+        })
+    }
 
     try {
         const user = await prisma.user.create({
@@ -55,6 +55,13 @@ userRouter.post("/signin", async (c) => {
     }).$extends(withAccelerate())
 
     const SignInBody = await c.req.json();
+    const { success } = signinInput.safeParse(SignInBody);
+    if (!success) {
+        c.status(411);
+        return c.json({
+            message: "Wrong Inputs Not validated by zod"
+        })
+    }
 
     try {
         // checking wheather the user exixts or not ....

@@ -3,7 +3,7 @@ import LabledInput from "./LabledInput"
 
 
 const SignUpcompo = () => {
-
+  
   return (
     <div className="h-screen flex justify-center flex-col">
       <div className="flex justify-center">
@@ -17,7 +17,7 @@ const SignUpcompo = () => {
           </div>
           <div>
             <LabledInput label="username" placeholder="vansh Kalra" onchange={(e) => {
-
+              console.log(e);
             }} />
           </div>
         </div>

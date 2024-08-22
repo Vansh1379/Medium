@@ -2,6 +2,7 @@ import { Context, Hono } from "hono"
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, verify } from "hono/jwt";
+import { createBlogInput, updateBlogInput } from "@vanshkalra1379/medium-common";
 
 const blogRouter = new Hono<{
     Bindings: {
@@ -45,6 +46,11 @@ blogRouter.post('/', async (c) => {
 
     const body = await c.req.json();
 
+    const { success } = createBlogInput.safeParse(body);
+    if (!success) {
+        return c.body("Zod validation failed", 400);
+    }
+
     const blog = await prisma.blog.create({
         data: {
             title: body.title,
@@ -65,6 +71,11 @@ blogRouter.put('/update', async (c) => {
     }).$extends(withAccelerate())
 
     const body = await c.req.json();
+    const { success } = updateBlogInput.safeParse(body);
+    if (!success) {
+        return c.body("Zod validation failed", 400);
+    }
+
 
     const blog = await prisma.blog.update({
         where: {

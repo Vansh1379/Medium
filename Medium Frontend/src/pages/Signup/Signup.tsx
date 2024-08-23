@@ -1,15 +1,15 @@
 
-import Quote from "../../components/signup/Quote"
-import SignUpcompo from "../../components/signup/SignUpcompo"
+import Quote from "../../components/AuthCompo/Quote"
+import AuthCommon from "../../components/AuthCompo/AuthCommon"
 
 
 const Signup = () => {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2">
       <div>
-        <SignUpcompo />
-      </div> 
-      <div className=" invisible md:visible">
+        <AuthCommon type="signup" />
+      </div>
+      <div className=" hidden lg:block">
         <Quote />
       </div>
     </div>

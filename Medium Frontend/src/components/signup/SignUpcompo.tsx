@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom"
 import LabledInput from "./LabledInput"
+import { SignUpInput } from "@vanshkalra1379/medium-common"
+import { useState } from "react"
 
 
 const SignUpcompo = () => {
-  
+
+  const [postInputs, setPostInputs] = useState<SignUpInput>({
+    name: "",
+    username: "",
+    password: ""
+  });
+
   return (
     <div className="h-screen flex justify-center flex-col">
       <div className="flex justify-center">
@@ -16,8 +24,23 @@ const SignUpcompo = () => {
             <Link to={"/singin"} className="pl-2 underline"> Login</Link>
           </div>
           <div>
-            <LabledInput label="username" placeholder="vansh Kalra" onchange={(e) => {
-              console.log(e);
+            <LabledInput label="name" placeholder="vansh Kalra" onchange={(e) => {
+              setPostInputs(c=>({
+                ...c,
+                name: e.target.value,
+              }))
+            }} />
+             <LabledInput label="username" placeholder="vanshkalra1379@gmail.com" onchange={(e) => {
+              setPostInputs(c=>({
+                ...c,
+                name: e.target.value,
+              }))
+            }} />
+             <LabledInput label="password" placeholder="123456" onchange={(e) => {
+              setPostInputs(c=>({
+                ...c,
+                name: e.target.value,
+              }))
             }} />
           </div>
         </div>

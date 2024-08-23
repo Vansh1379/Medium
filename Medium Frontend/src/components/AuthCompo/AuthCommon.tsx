@@ -17,14 +17,14 @@ const AuthCommon = ({ type }: { type: "signup" | "signin" }) => {
     password: ""
   });
 
-  const sendRequest = async() => {
-    try{
-       const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs);
-       const jwt = response.data;
-       localStorage.setItem("token", jwt);
-       navigate("/blogs");
+  const sendRequest = async () => {
+    try {
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs);
+      const jwt = response.data;
+      localStorage.setItem("token", jwt);
+      navigate("/blogs");
     }
-    catch(e){
+    catch (e) {
       console.error(`This is error while signup in ract compo authcommon ${e}`);
     }
   }
@@ -51,13 +51,13 @@ const AuthCommon = ({ type }: { type: "signup" | "signin" }) => {
             <LabledInput label="email" placeholder="vanshkalra1379@gmail.com" onchange={(e) => {
               setPostInputs(c => ({
                 ...c,
-                name: e.target.value,
+                username: e.target.value,
               }))
             }} />
             <LabledInput label="password" type={"password"} placeholder="123456" onchange={(e) => {
               setPostInputs(c => ({
                 ...c,
-                name: e.target.value,
+                password: e.target.value,
               }))
             }} />
           </div>

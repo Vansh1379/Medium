@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
 import { signupInput, signinInput } from "@vanshkalra1379/medium-common"
+
 export const userRouter = new Hono<{
     Bindings: {
         DATABASE_URL: string;
@@ -39,7 +40,7 @@ userRouter.post('/signup', async (c) => {
             id: user.id
         }, c.env.JWT_SECRET);
 
-        return c.text(`jwt here guys ${jwt}`)
+        return c.text(`Bearer ${jwt}`)
     }
     catch (e) {
         c.status(403);

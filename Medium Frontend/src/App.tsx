@@ -4,7 +4,7 @@ import Signup from './pages/Signup/Signup'
 import SignIn from './pages/SignIn/SignIn'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Blogs from './pages/Blogs/Blogs'
-
+  
 function App() {
 
   return (

@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Blogs() {
+const Blogs = () => {
   return (
-    <div>Blogs</div>
+    <div>
+      Blog's
+    </div>
   )
 }
 

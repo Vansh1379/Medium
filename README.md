@@ -47,7 +47,7 @@ Welcome to the Medium Clone project! This is a full-stack blogging platform simi
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/medium-clone.git
+   git clone https://github.com/Vansh1379/Medium.git
    cd Medium Frontend
    ```
 

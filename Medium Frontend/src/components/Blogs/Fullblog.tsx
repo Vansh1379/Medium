@@ -9,13 +9,13 @@ const Fullblog = ({ blog }: { blog: Blog }) => {
             <div className="flex  justify-center h-screen pl-10">
                 <div className="grid grid-cols-12 px-10 w-full pt-12  max-w-screen-2xl">
                     <div className="col-span-8">
-                        <div className="text-5xl font-bold font-serif">
+                        <div className="text-5xl font-bold font-sans">
                             {blog.title}
                         </div>
                         <div className="text-base font-medium text-slate-500 pt-3">
                             Posted on "2nd December2024"
                         </div>
-                        <div className="pt-6 font-mono text-xl">
+                        <div className="pt-6 font-sans text-xl">
                             {blog.content}
                         </div>
                     </div>

@@ -9,7 +9,7 @@ const Blogid = () => {
     id: id || ""
   });
 
-  if (loading) {
+  if (loading || !blog) {
     return <div>
       Loading...
     </div>

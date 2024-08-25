@@ -2,26 +2,62 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../config";
 
-export const useBlogs = () => {
+interface Blog {
+    "content": string;
+    "title": string;
+    "id": number;
+    "author": {
+        "name": string
+    }
+}
+
+export const useBlogbyid = ({ id }: { id: string }) => {
     const [loading, setLoading] = useState(true);
-    const [blogs, setBlogs] = useState([]);
+    const [blog, setBlog] = useState<Blog>();
 
     useEffect(() => {
-        const fetchBlogs = async () => {
-            try {
-                const response = await axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
-                    headers: {
-                        Authorization: `${localStorage.getItem("token")}`
-                    }
+        try {
+            axios.get(`${BACKEND_URL}/api/v1/blog/bulk/${id}`, {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            })
+                .then(response => {
+                    setBlog(response.data.blog);
+                    setLoading(false);
                 })
-                setBlogs(response.data.blogs);
-                setLoading(false);
-            } catch (e) {
-                console.error(e);
-            }
-        };
+        } catch (e) {
+            console.error(e);
+        }
+    }, [id]); 
 
-        fetchBlogs();
+    return {
+        loading,
+        blog
+    };
+}
+
+
+
+
+export const useBlogs = () => {
+    const [loading, setLoading] = useState(true);
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+
+    useEffect(() => {
+        try {
+            axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            })
+                .then(response => {
+                    setBlogs(response.data.list);
+                    setLoading(false);
+                })
+        } catch (e) {
+            console.error(e);
+        }
     }, []);
 
     return {

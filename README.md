@@ -1,7 +1,3 @@
-Here's your updated README:
-
----
-
 # Medium Clone
 
 Welcome to the Medium Clone project! This is a full-stack blogging platform similar to the real Medium website, where users can read, publish, update, and delete blogs. This project is built with modern technologies to ensure scalability, maintainability, and performance.
@@ -22,10 +18,8 @@ Welcome to the Medium Clone project! This is a full-stack blogging platform simi
 
 - User Authentication (Signup, Login, Logout)
 - CRUD Operations for Blog Posts
-- Commenting System
 - Like/Dislike Functionality
 - Rich Text Editor for Writing Posts
-- User Profiles
 - Email Notifications on Signup
 - Responsive Design
 
@@ -45,7 +39,7 @@ Welcome to the Medium Clone project! This is a full-stack blogging platform simi
 - **Prisma Accelerate** for connection pooling
 - **JWT** for authentication
 - **Zod** for input validation
-- **Honor Library** for writing Express-like code in TypeScript
+- **Hono Library** for writing Express-like code in TypeScript
 
 ## Setup and Installation
 
@@ -54,7 +48,7 @@ Welcome to the Medium Clone project! This is a full-stack blogging platform simi
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/medium-clone.git
-   cd medium-clone/client
+   cd Medium Frontend
    ```
 
 2. **Install dependencies:**
@@ -73,7 +67,7 @@ Welcome to the Medium Clone project! This is a full-stack blogging platform simi
 
 1. **Navigate to the backend directory:**
    ```bash
-   cd ../server
+   cd Medium Backend
    ```
 
 2. **Install dependencies:**
@@ -141,8 +135,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or feedback, reach out to me at [vanshkalra@example.com](mailto:vanshkalra@example.com).
+For any questions or feedback, reach out to me at [vanshkalra1379@gmail.com](mailto:vanshkalra@example.com).
 
 ---
 
-This README gives a clear overview of your project and should be ready to use on GitHub.

@@ -1,50 +1,80 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# Medium Clone Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to the frontend of the Medium Clone project! This part of the project is responsible for the user interface, handling interactions, and displaying blog posts. It is built with modern technologies to ensure a smooth and responsive user experience.
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Tech Stack](#tech-stack)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React** with **Vite** as the template
+- **TypeScript** as the programming language
+- **React Router DOM** for navigation
+- **Nodemailer** for handling email notifications
+- **Custom NPM Package** for DOM manipulation
+
+## Setup and Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Vansh1379/Medium.git
+   cd Medium Frontend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run the frontend locally:**
+   ```bash
+   npm run dev
+   ```
+
+   The frontend will be running on `http://localhost:3000`.
+
+## Usage
+
+- **Browse Blogs:** Navigate through different blog posts and read them.
+- **Publish a Blog Post:** Use the rich text editor to create and publish new blog posts.
+- **Update/Delete Posts:** Manage your posts from your profile section.
+- **Comment on Posts:** Interact with other users by commenting on their blog posts.
+- **Receive Notifications:** Get email notifications when you sign up or when there are updates related to your posts.
+
+## Project Structure
+
+```plaintext
+client/
+├── src/
+│   ├── components/  # Reusable UI components
+│   ├── pages/       # Page components corresponding to routes
+│   ├── styles/      # Global and component-specific styles
+│   └── ...
+└── ...
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Contributing
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Contributions are welcome! Feel free to submit a Pull Request or open an issue if you have suggestions or encounter any bugs.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any questions or feedback, reach out to me at [vanshkalra1379@gmail.com](mailto:vanshkalra@example.com).
+
+---
+
